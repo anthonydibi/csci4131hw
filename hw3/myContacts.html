@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- api key = AIzaSyD_HTUxfdjdx39vPx4t1masCSLwS3-e3GQ -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>My Contacts</title>
+        <script src="thumbnail.js"></script>
+        <script src="map.js"></script>
+    </head>
+    <body>
+        <nav>
+            <table>
+                <tr>
+                    <th><a href="myContacts.html">My Contacts</a></th>
+                    <th><a href="myWidgets.html">My Widgets</a></th>
+                    <th><a href="myForm.html">My Form</a></th>
+                </tr>
+            </table>
+        </nav>
+        <h1>My University Contacts</h1>
+        <div class="gridy">
+            <div>
+                <table id="contacts">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact Category</th>
+                        <th>Address</th>
+                        <th>Description</th>
+                        <th>Email</th>
+                        <th>Info</th>
+                    </tr>
+                    <tr onmouseover="changeImg(this, 'keller.jpg')" onmouseout="hideImg(this)" class="keller">
+                        <td>Svetlana Yarosh</td>
+                        <td>Academic</td>
+                        <td>
+                            Kenneth H. Keller Hall <br>
+                            Room 5-187 <br>
+                            200 Union Street Se <br>
+                            Minneapolis, MN 55455 <br>
+                            <img src="keller.jpg" class="thumbnail" alt="Keller">
+                        </td>
+                        <td>Professor for CSCI 5115 Spring 2022</td>
+                        <td><a href="mailto:lana@umn.edu">lana@umn.edu</a></td>
+                        <td><a href="https://cse.umn.edu/cs/lana-yarosh">CSE Department Page</a></td>
+                    </tr>
+                    <tr onmouseover="changeImg(this, 'keller.jpg')" onmouseout="hideImg(this)">
+                        <td>Dr. Evan Suma Rosenberg</td>
+                        <td>Academic</td>
+                        <td>
+                            Kenneth H. Keller Hall <br>
+                            Room 6-201 <br>
+                            200 Union Street Se <br>
+                            Minneapolis, MN 55455 <br>
+                            <img src="keller.jpg" class="thumbnail" alt="Keller">
+                        </td>
+                        <td>Professor for CSCI 4611 Spring 2022</td>
+                        <td><a href="mailto:suma@umn.edu">suma@umn.edu</a></td>
+                        <td><a href="https://cse.umn.edu/cs/evan-suma-rosenberg">CSE Department Page</a></td>
+                    </tr>
+                    <tr onmouseover="changeImg(this, 'shepherd.jpg')" onmouseout="hideImg(this)">
+                        <td>Christopher Kauffman</td>
+                        <td>Academic</td>
+                        <td>
+                            Shepherd Labs <br>
+                            Room 327 <br>
+                            100 Union St SE <br>
+                            Minneapolis, MN 55455 <br>
+                            <img src="shepherd.jpg" class="thumbnail" alt="Shepherd">
+                        </td>
+                        <td>Professor for CSCI 2021 Spring 2022</td>
+                        <td><a href="mailto:kauffman@umn.edu">kauffman@umn.edu</a></td>
+                        <td><a href="https://cse.umn.edu/cs/christopher-kauffman">CSE Department Page</a></td>
+                    </tr>
+                    <tr onmouseover="changeImg(this, 'keller.jpg')" onmouseout="hideImg(this)">
+                        <td>Chris Dovolis</td>
+                        <td>Academic</td>
+                        <td>
+                            Kenneth H. Keller Hall <br>
+                            Room 6-195 <br>
+                            200 Union Street Se <br>
+                            Minneapolis, MN 55455 <br>
+                            <img src="keller.jpg" class="thumbnail" alt="Keller">
+                        </td>
+                        <td>Professor for CSCI 1933 Spring 2022</td>
+                        <td><a href="mailto:dovolis@umn.edu">dovolis@umn.edu</a></td>
+                        <td><a href="https://cse.umn.edu/cs/chris-dovolis">CSE Department Page</a></td>
+                    </tr>
+                    <tr onmouseover="changeImg(this, 'mcnamara.jpg')" onmouseout="hideImg(this)">
+                        <td>Erika Theiler</td>
+                        <td>Personal</td>
+                        <td>
+                            McNamara Alumni Center <br>
+                            Suite 180 <br>
+                            200 SE Oak St <br>
+                            Minneapolis, MN 55455 <br>
+                            <img src="mcnamara.jpg" class="thumbnail" alt="Mcnamara">
+                        </td>
+                        <td>DRC Access Consultant</td>
+                        <td><a href="mailto:etheiler@umn.edu">etheiler@umn.edu</a></td>
+                        <td>None</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="container">
+                <img id="bigimg" src="placeholder.png" alt="UMN" class="bigimg">
+            </div>
+        </div>
+        <div id="map">
+        </div>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_HTUxfdjdx39vPx4t1masCSLwS3-e3GQ&callback=initMap&libraries=&v=weekly"
+        async
+        ></script>
+
+    </body>
+</html>
