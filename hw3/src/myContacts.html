@@ -104,12 +104,54 @@
             </div>
             <div class="container">
                 <img id="bigimg" src="placeholder.png" alt="UMN" class="bigimg">
+                <div>
+                    <p>Latitude/Longitude of the target location: <input type="text" id="targetLat" disabled><input type="text" id="targetLng" disabled></p>
+                    <p>Distance to the target location (meters): <input type="text" id="targetDistance" disabled></p>
+                </div>
+            </div>
+            <div id="map">
+            </div>
+        <div id="placeGrid">
+            <div id="locationForm">
+                <form>
+                    <label for="locationCategory">Find</label>
+                    <select id="locationCategory" required>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Supermarket">Supermarket</option>
+                        <option value="Parking">Parking</option>
+                        <option value="Other">Other</option>
+                    </select> <br>
+                    <label for="locationRadius">In</label>
+                    <input id="locationRadius" type="text" pattern="\d+" required>
+                    <p>meters</p>
+                    <label for="otherKeyword">Other:</label>
+                    <input type="text" id="otherKeyword" disabled>
+                    <button type="submit" id="submitLocation">Search</button>
+                </form>
+            </div>
+            <div id="directionForm">
+                <p>Take me to:</p>
+                <p>
+                    <select id="contactDirectionSelect"></select>
+                </p>
+                <p>
+                    From <input type="text" id="directionsFrom" value="Default (current location)">
+                </p>
+                <p>by</p>
+                <p>
+                    <input type="radio" id="walk" name="directionsType" value="WALKING" checked>
+                    <label for="walk">WALKING</label><br>
+                    <input type="radio" id="drive" name="directionsType" value="DRIVING">
+                    <label for="drive">DRIVING</label><br>
+                    <input type="radio" id="transit" name="directionsType" value="TRANSIT">
+                    <label for="transit">TRANSIT</label>
+                </p>
+                <button id="submitDirections">Go</button>
             </div>
         </div>
-        <div id="map">
-        </div>
-        <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_HTUxfdjdx39vPx4t1masCSLwS3-e3GQ&callback=initMap&libraries=&v=weekly"
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_HTUxfdjdx39vPx4t1masCSLwS3-e3GQ&callback=initMap&libraries=places&v=weekly"
         async
         ></script>
 
