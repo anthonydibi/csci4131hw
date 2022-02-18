@@ -4,6 +4,8 @@ var infoWindows = [];
 let geocoder;
 let userPosition;
 let map;
+let map2;
+let directionsRenderer;
 const uofM = { lat: 44.9727, lng: -93.23540000000003 };
 
 class Contact{
@@ -33,14 +35,22 @@ function initMap() {
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log(position);
         userPosition = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
+        let latElement = document.getElementById("targetLat");
+        let lngElement = document.getElementById("targetLng");
+        let distElement = document.getElementById("targetDistance");
+        let d = dist(userPosition, uofM);
+        latElement.value = uofM.lat;
+        lngElement.value = uofM.lng;
+        distElement.value = d;
       }
     )
   }
+  var input = document.getElementById('directionsFrom'); 
+  var autocomplete = new google.maps.places.Autocomplete(input); 
 }
 
 function getTableObjects(){
@@ -88,7 +98,7 @@ function geocode(request, contact) {
         map: map,
       });
       markers.push(marker);
-      const contentString = "<p>" + contact.name + "<br>" + contact.address + "<br>" + contact.info + "<br></p>";
+      const contentString = '<div class="listbox"><p>' + "<strong>" + contact.name + "</strong>" + "<br>" + "<div><img src=" + contact.img.src + " alt=" + contact.img.alt + ' class="infowindowimg"' + "/></div>" + contact.address + "<br>" + contact.info + "<br></p></div>";
       let infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
@@ -117,13 +127,6 @@ function geocode(request, contact) {
 }
 
 function geocodeTableObjects(){
-  let latElement = document.getElementById("targetLat");
-  let lngElement = document.getElementById("targetLng");
-  let distElement = document.getElementById("targetDistance");
-  let d = dist(userPosition, uofM);
-  latElement.value = uofM.lat;
-  lngElement.value = uofM.lng;
-  distElement.value = d;
   for(let i = 0; i < tableObjects.length; i++){
     let contact = tableObjects[i];
     geocode({address : contact.address}, contact);
@@ -131,10 +134,10 @@ function geocodeTableObjects(){
 }
 
 function submitLocation(event){
+  event.preventDefault();
   let radiusElement = document.getElementById("locationRadius");
   let categoryElement = document.getElementById("locationCategory");
   let otherElement = document.getElementById("otherKeyword");
-  event.preventDefault();
   var request = {
     location : uofM,
     radius : radiusElement.value,
@@ -215,7 +218,11 @@ function toggleOther(){
 
 function displayDirections(){ //from https://developers.google.com/maps/documentation/javascript/directions
   var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
+  if(directionsRenderer){
+    directionsRenderer.setMap(null);
+    directionsRenderer = null;
+  }
+  directionsRenderer = new google.maps.DirectionsRenderer();
   var srcElement = document.getElementById("directionsFrom");
   var src = srcElement.value == "Default (current location)" ? new google.maps.LatLng(userPosition.lat, userPosition.lng) : srcElement.value;
   var dest;
@@ -228,7 +235,6 @@ function displayDirections(){ //from https://developers.google.com/maps/document
       dest = new google.maps.LatLng(contact.pos.lat, contact.pos.lng);
     }
   }
-  console.log(src, dest);
   if(src && dest){
     directionsRenderer.setMap(map);
     var request = {

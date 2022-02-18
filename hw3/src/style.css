@@ -11,8 +11,25 @@ table{
 #map{
     height : 450px;
 }
+#map2{
+    height: 400px;
+    width: 400px;
+}
+#inline{
+    display: inline-block;
+}
 button{
     background-color: rgb(236, 93, 93);
+}
+.listbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.infowindowimg{
+    width : 200px;
+    height : 100px;
+    object-fit: cover;
 }
 h1 {
     font-family : Verdana;
@@ -29,8 +46,8 @@ tr:hover{
     background-color: lightgrey
 }
 .bigimg{
-    width : 800px;
-    height : 600px;
+    width : 600px;
+    height : 400px;
     object-fit: cover;
 }
 .thumbnail{
